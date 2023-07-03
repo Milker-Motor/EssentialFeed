@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import EssentialApp
 import EssentialFeed
 import EssentialFeediOS
 
