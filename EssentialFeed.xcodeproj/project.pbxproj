@@ -309,6 +309,7 @@
 				49FC9A122A8BAAFA002BC58A /* Shared API */,
 				49FC9A132A8BAB02002BC58A /* Shared API Infra */,
 				49FC9A0F2A8BA805002BC58A /* Image Comments Feature */,
+				49FC9A172A8BAD86002BC58A /* Image Comments API */,
 				080EDF1021B6DFA200813479 /* Feed Feature */,
 				08B42EA221C3F08A00DDA349 /* Feed API */,
 				089C40DA22170EB200DE552E /* Feed Cache */,
@@ -321,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				080EDF0121B6DA7E00813479 /* Info.plist */,
+				49FC9A182A8BADC9002BC58A /* Image Comments API */,
 				49FC9A162A8BAC1C002BC58A /* Shared API */,
 				49FC9A152A8BABED002BC58A /* Shared API Infra */,
 				0844768D21FCB23900439BE9 /* Helpers */,
@@ -501,8 +503,6 @@
 			children = (
 				08897BF0233A1C9B0029F5E4 /* Helpers */,
 				08B42EA321C3F09A00DDA349 /* RemoteFeedLoader.swift */,
-				49FC9A092A8BA541002BC58A /* ImageCommentsMapper.swift */,
-				49FC9A0B2A8BA582002BC58A /* RemoteImageCommentsLoader.swift */,
 				08C0880D21E4EF2900ACFB30 /* FeedItemsMapper.swift */,
 				08868937221DAA01007BC3E7 /* RemoteFeedItem.swift */,
 				08897BEC23393A2E0029F5E4 /* RemoteFeedImageDataLoader.swift */,
@@ -522,7 +522,6 @@
 			children = (
 				08897BE9233939AA0029F5E4 /* Helpers */,
 				08DDC13921BEA99E00F490ED /* LoadFeedFromRemoteUseCaseTests.swift */,
-				49FC9A0D2A8BA5DC002BC58A /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
 				08897BE7233910040029F5E4 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
 			);
 			path = "Feed API";
@@ -625,6 +624,23 @@
 				08897BEA233939B60029F5E4 /* HTTPClientSpy.swift */,
 			);
 			path = "Shared API";
+			sourceTree = "<group>";
+		};
+		49FC9A172A8BAD86002BC58A /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				49FC9A092A8BA541002BC58A /* ImageCommentsMapper.swift */,
+				49FC9A0B2A8BA582002BC58A /* RemoteImageCommentsLoader.swift */,
+			);
+			path = "Image Comments API";
+			sourceTree = "<group>";
+		};
+		49FC9A182A8BADC9002BC58A /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				49FC9A0D2A8BA5DC002BC58A /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
+			);
+			path = "Image Comments API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
