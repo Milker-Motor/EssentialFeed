@@ -80,6 +80,8 @@
 		490FFF0B2A8E7C7900575C82 /* SharedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490FFF0A2A8E7C7900575C82 /* SharedLocalizationTests.swift */; };
 		490FFF0E2A8E7CBE00575C82 /* Shared.strings in Resources */ = {isa = PBXBuildFile; fileRef = 490FFF102A8E7CBE00575C82 /* Shared.strings */; };
 		490FFF142A8E826600575C82 /* SharedLocalizationTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490FFF132A8E826600575C82 /* SharedLocalizationTestHelpers.swift */; };
+		49100AAA2AC16D3300E32D7D /* LoadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49100AA92AC16D3300E32D7D /* LoadMoreCell.swift */; };
+		49100AAC2AC16D7B00E32D7D /* LoadMoreCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49100AAB2AC16D7B00E32D7D /* LoadMoreCellController.swift */; };
 		492893B82A94C3EE00E5BCDD /* FeedUIIntegrationTests+LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492893AE2A94C3EE00E5BCDD /* FeedUIIntegrationTests+LoaderSpy.swift */; };
 		492893B92A94C3EE00E5BCDD /* FeedUIIntegrationTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492893AF2A94C3EE00E5BCDD /* FeedUIIntegrationTests+Localization.swift */; };
 		492893BA2A94C3EE00E5BCDD /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492893B02A94C3EE00E5BCDD /* UIButton+TestHelpers.swift */; };
@@ -242,6 +244,8 @@
 		490FFF112A8E7CC100575C82 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Shared.strings; sourceTree = "<group>"; };
 		490FFF122A8E7CC200575C82 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Shared.strings"; sourceTree = "<group>"; };
 		490FFF132A8E826600575C82 /* SharedLocalizationTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedLocalizationTestHelpers.swift; sourceTree = "<group>"; };
+		49100AA92AC16D3300E32D7D /* LoadMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCell.swift; sourceTree = "<group>"; };
+		49100AAB2AC16D7B00E32D7D /* LoadMoreCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCellController.swift; sourceTree = "<group>"; };
 		492893AE2A94C3EE00E5BCDD /* FeedUIIntegrationTests+LoaderSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedUIIntegrationTests+LoaderSpy.swift"; sourceTree = "<group>"; };
 		492893AF2A94C3EE00E5BCDD /* FeedUIIntegrationTests+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedUIIntegrationTests+Localization.swift"; sourceTree = "<group>"; };
 		492893B02A94C3EE00E5BCDD /* UIButton+TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+TestHelpers.swift"; sourceTree = "<group>"; };
@@ -622,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				08EFE6BC22D6384100DA417A /* FeedImageCellController.swift */,
+				49100AAB2AC16D7B00E32D7D /* LoadMoreCellController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -631,6 +636,7 @@
 			children = (
 				08A3F2B5232AA67200127C15 /* Helpers */,
 				08B5EB4D22CE244400FE8683 /* FeedImageCell.swift */,
+				49100AA92AC16D3300E32D7D /* LoadMoreCell.swift */,
 				0822D0F023056FEB004B3345 /* Feed.storyboard */,
 				0822D0F2230570F3004B3345 /* Feed.xcassets */,
 			);
@@ -1234,6 +1240,7 @@
 				08A3F2B2232AA1C200127C15 /* ErrorView.swift in Sources */,
 				08A3F2BB232BA64700127C15 /* UIRefreshControl+Helpers.swift in Sources */,
 				4954D9532A975FD100180220 /* CellController.swift in Sources */,
+				49100AAC2AC16D7B00E32D7D /* LoadMoreCellController.swift in Sources */,
 				08B5EB5022CE328100FE8683 /* UIView+Shimmering.swift in Sources */,
 				0822D0F523058078004B3345 /* UITableView+Dequeueing.swift in Sources */,
 				08BB7EAB22C1425100F8B83C /* ListViewController.swift in Sources */,
@@ -1242,6 +1249,7 @@
 				492893E72A94D11A00E5BCDD /* ImageCommentCellController.swift in Sources */,
 				08EFE6BD22D6384100DA417A /* FeedImageCellController.swift in Sources */,
 				492893E92A94D15000E5BCDD /* ImageCommentCell.swift in Sources */,
+				49100AAA2AC16D3300E32D7D /* LoadMoreCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
