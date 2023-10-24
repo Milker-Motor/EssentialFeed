@@ -18,7 +18,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         let deletionError = anyNSError()
         store.completeDeletion(with: deletionError)
         
-        sut.save(uniqueImageFeed().models) { _ in }
+        try? sut.save(uniqueImageFeed().models)
         store.completeDeletion(with: deletionError)
         
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed])
@@ -30,7 +30,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT(currentDate: { timestamp })
         store.completeDeletionSuccessfully()
         
-        sut.save(feed.models) { _ in }
+        sut.save(feed.models)
         
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed, .insert(feed.local, timestamp)])
     }
@@ -87,21 +87,18 @@ class CacheFeedUseCaseTests: XCTestCase {
         return (sut, store)
     }
     
-    private func expect(_ sut: LocalFeedImageDataLoader, toCompleteWith expectedResult: Result<Void, Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-        action()
-        
-        let receivedResult = Result { try sut.save(anyData(), for: anyURL()) }
-        
-        switch (receivedResult, expectedResult) {
-        case (.success, .success):
-            break
-            
-        case (.failure(let receivedError as LocalFeedImageDataLoader.SaveError),
-              .failure(let expectedError as LocalFeedImageDataLoader.SaveError)):
-            XCTAssertEqual(receivedError, expectedError, file: file, line: line)
-            
-        default:
-            XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
-        }
+    private func expect(_ sut: LocalFeedLoader, toCompleteWithError expectedError: NSError?, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+             let exp = expectation(description: "Wait for save completion")
+             action()
+
+             var receivedError: Error?
+             sut.save(uniqueImageFeed().models) { result in
+                 if case let Result.failure(error) = result { receivedError = error }
+                 exp.fulfill()
+             }
+
+             wait(for: [exp], timeout: 1.0)
+
+             XCTAssertEqual(receivedError as NSError?, expectedError, file: file, line: line)
     }
 }

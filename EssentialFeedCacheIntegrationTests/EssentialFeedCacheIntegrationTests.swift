@@ -161,13 +161,13 @@ class EssentialFeedCacheIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 	
-	private func save(_ data: Data, for url: URL, with loader: LocalFeedImageDataLoader, file: StaticString = #file, line: UInt = #line) {
-		do {
-            try loader.save(data, for: url)
+    private func save(_ data: Data, for url: URL, with loader: LocalFeedImageDataLoader, file: StaticString = #file, line: UInt = #line) {
+        do {
+            try? loader.save(feed)
         } catch {
-            XCTFail("Expected to save image data successfully, got error: \(error)", file: file, line: line)
+            XCTFail("Expected to save feed successfully, got error: \(error)", file: file, line: line)
         }
-	}
+    }
 	
     private func expect(_ sut: LocalFeedImageDataLoader, toLoad expectedData: Data, for url: URL, file: StaticString = #file, line: UInt = #line) {
         do {
