@@ -13,13 +13,13 @@ class LoadFeedFromCacheUseCaseTests: XCTestCase {
 		XCTAssertEqual(store.receivedMessages, [])
 	}
 	
-	func test_load_requestsCacheRetrieval() {
-		let (sut, store) = makeSUT()
-		
-        _ = sut.load()
-		
-		XCTAssertEqual(store.receivedMessages, [.retrieve])
-	}
+    func test_load_requestsCacheRetrieval() {
+        let (sut, store) = makeSUT()
+        
+        _ = try? sut.load()
+        
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
+    }
 	
 	func test_load_failsOnRetrievalError() {
 		let (sut, store) = makeSUT()
@@ -75,7 +75,7 @@ class LoadFeedFromCacheUseCaseTests: XCTestCase {
 		let (sut, store) = makeSUT()
         store.completeRetrieval(with: anyNSError())
 		
-        _ = sut.load()
+        _ = try? sut.load()
 		
 		XCTAssertEqual(store.receivedMessages, [.retrieve])
 	}
@@ -84,7 +84,7 @@ class LoadFeedFromCacheUseCaseTests: XCTestCase {
 		let (sut, store) = makeSUT()
         store.completeRetrievalWithEmptyCache()
         
-        _ = sut.load()
+        _ = try? sut.load()
 		
 		XCTAssertEqual(store.receivedMessages, [.retrieve])
 	}
@@ -96,7 +96,7 @@ class LoadFeedFromCacheUseCaseTests: XCTestCase {
 		let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
         store.completeRetrieval(with: feed.local, timestamp: nonExpiredTimestamp)
 
-        _ = sut.load()
+        _ = try? sut.load()
 		store.completeRetrieval(with: feed.local, timestamp: nonExpiredTimestamp)
 		
 		XCTAssertEqual(store.receivedMessages, [.retrieve])
@@ -109,7 +109,7 @@ class LoadFeedFromCacheUseCaseTests: XCTestCase {
 		let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
         store.completeRetrieval(with: feed.local, timestamp: expirationTimestamp)
         
-        _ = sut.load()
+        _ = try? sut.load()
 		
 		XCTAssertEqual(store.receivedMessages, [.retrieve])
 	}
@@ -121,7 +121,7 @@ class LoadFeedFromCacheUseCaseTests: XCTestCase {
 		let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
         store.completeRetrieval(with: feed.local, timestamp: expiredTimestamp)
         
-        _ = sut.load()
+        _ = try? sut.load()
 		
 		XCTAssertEqual(store.receivedMessages, [.retrieve])
 	}

@@ -18,7 +18,7 @@ class FeedStoreSpy: FeedStore {
     private var insertionResult: Result<Void, Error>?
     private var retrievalResult: Result<CachedFeed?, Error>?
     
-    func deleteCachedFeed(completion: @escaping DeletionCompletion) {
+    func deleteCachedFeed() throws {
         receivedMessages.append(.deleteCachedFeed)
         try deletionResult?.get()
     }
