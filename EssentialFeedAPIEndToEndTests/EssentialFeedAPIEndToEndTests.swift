@@ -43,10 +43,8 @@ class EssentialFeedAPIEndToEndTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-    private func getFeedResult(file: StaticString = #file, line: UInt = #line) -> Swift.Result<[FeedImage], Error>? {
+    private func getFeedResult(file: StaticString = #filePath, line: UInt = #line) -> Swift.Result<[FeedImage], Error>? {
         let client = ephemeralClient()
-        trackForMemoryLeaks(loader, file: file, line: line)
-        
         let exp = expectation(description: "Wait for load completion")
         
         var receivedResult: Swift.Result<[FeedImage], Error>?
