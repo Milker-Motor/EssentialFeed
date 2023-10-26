@@ -6,8 +6,8 @@ import UIKit
 import EssentialFeed
 
 public protocol FeedImageCellControllerDelegate {
-	func didRequestImage()
-	func didCancelImageRequest()
+    func didRequestImage()
+    func didCancelImageRequest()
 }
 
 public final class FeedImageCellController: NSObject {
@@ -23,7 +23,6 @@ public final class FeedImageCellController: NSObject {
         self.delegate = delegate
         self.selection = selection
     }
-    
 }
 
 extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
@@ -38,8 +37,13 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
         cell?.locationLabel.text = viewModel.location
         cell?.descriptionLabel.text = viewModel.description
         cell?.feedImageView.image = nil
+        cell?.feedImageContainer.isShimmering = true
+        cell?.feedImageRetryButton.isHidden = true
         cell?.onRetry = { [weak self] in
             self?.delegate.didRequestImage()
+        }
+        cell?.onReuse = { [weak self] in
+            self?.releaseCellForReuse()
         }
         delegate.didRequestImage()
         return cell!
@@ -47,6 +51,11 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selection()
+    }
+    
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.cell = cell as? FeedImageCell
+        delegate.didRequestImage()
     }
     
     public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
